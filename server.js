@@ -24,6 +24,15 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
+var responseObject = {}
+// api/date
+app.get("/api/:date", (req, res) => {
+    var date = req.params.date;
+    if(date.includes("-")){
+      responseObject['unix'] = new Date(date).getTime();
+    }
+    res.json(responseObject);
+});
 
 
 // listen for requests :)
